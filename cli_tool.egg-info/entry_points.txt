@@ -1,0 +1,2 @@
+[console_scripts]
+reconnector = cli_tool:main
