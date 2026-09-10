@@ -11,7 +11,7 @@ Clone the project:
 git clone https://github.com/De1836/Reconnector.git
 ```
 
-Then, CD into the repo and install the package using pip:
+Then, cd into the repo and install the package using pip:
 ```bash
 cd /path/to/repo/
 pip3 install .
