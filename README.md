@@ -6,11 +6,14 @@ Mac and Linux support only. Windows support coming eventually.
 
 ## Installation
 
-First, navigate to the project directory.
-
-Then install the package using pip:
-
+Clone the project:
 ```bash
+git clone https://github.com/De1836/Reconnector.git
+```
+
+Then, CD into the repo and install the package using pip:
+```bash
+cd /path/to/repo/
 pip3 install .
 ```
 
