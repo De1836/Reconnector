@@ -14,6 +14,15 @@ Then install the package using pip:
 pip3 install .
 ```
 
+If that doesn't work, try:
+```bash
+python3 -m pip install .
+```
+If the command won't run, try
+```bash
+export PATH="$HOME/<python version>/Library/Scripts/"
+```
+
 ## Usage
 
 ```bash
