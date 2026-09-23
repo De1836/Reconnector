@@ -27,14 +27,16 @@ def main():
 
     print(args)
 
-def host(api, port, delay):
+def host(api, key, delay):
     print("Uploading IP")
-    ip = sp.run(["ipconfig", "ifconfig", "getifaddr", "en0"], capture_output=True, text=True)
-    if ip1 != ip:
-        print("IP changed")
-        rq.patch(f"", data={"ip": ip})
-    ip1 = ip
-    time.sleep(delay)
+    ip1 = 0
+    while True:
+        ip = sp.run(["ipconfig", "ifconfig", "getifaddr", "en0"], capture_output=True, text=True)
+        if ip1 != ip:
+            print("IP changed")
+            rq.patch(f"", data={"ip": ip})
+        ip1 = ip
+        time.sleep(delay)
 
 def connect(ip, port, delay):
     print(f"Connecting to {ip}:{port}")
