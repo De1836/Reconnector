@@ -27,6 +27,7 @@ def main():
 
     print(args)
 
+<<<<<<< HEAD
 def host(api, key, delay):
     print("Uploading IP")
     ip1 = 0
@@ -37,6 +38,22 @@ def host(api, key, delay):
             rq.patch(f"", data={"ip": ip})
         ip1 = ip
         time.sleep(delay)
+=======
+def host(api, port):
+    print(f"Hosting on {api}")
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind((api, port))
+    s.listen(1)
+    while True:
+        conn, addr = s.accept()
+        print(f"Connected to {addr}")
+        while True:
+            data = conn.recv(1024)
+            if not data:
+                break
+            print(data.decode())
+        conn.close()
+>>>>>>> parent of 23ccaaf (ber)
 
 def connect(ip, port, delay):
     print(f"Connecting to {ip}:{port}")
